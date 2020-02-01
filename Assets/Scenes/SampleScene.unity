@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Health: 0
   m_AssociatedMesh: {fileID: 0}
   m_Col: {fileID: 0}
+  m_Working: 0
 --- !u!1 &182145432
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,11 +284,9 @@ MonoBehaviour:
   m_Deadzone: 0.05
   m_Rib: {fileID: 0}
   m_Cam: {fileID: 0}
+  m_PlayerManager: {fileID: 0}
   maxVelocityChange: 10
   velocity: {x: 0, y: 0, z: 0}
-  m_PlayerNumber: 0
-  Horizontal: 0
-  Vertical: 0
 --- !u!1 &454526932
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,11 +495,9 @@ MonoBehaviour:
   m_Deadzone: 0.05
   m_Rib: {fileID: 0}
   m_Cam: {fileID: 0}
+  m_PlayerManager: {fileID: 0}
   maxVelocityChange: 10
   velocity: {x: 0, y: 0, z: 0}
-  m_PlayerNumber: 0
-  Horizontal: 0
-  Vertical: 0
 --- !u!1 &666935023
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +792,10 @@ MonoBehaviour:
   - {fileID: 1234935791}
   - {fileID: 2063268186}
   offset: {x: -20, y: 24, z: 0}
+  smoothTime: 0.5
+  minZoom: 60
+  maxZoom: 18
+  ZoomLim: 14
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,11 +1007,9 @@ MonoBehaviour:
   m_Deadzone: 0.05
   m_Rib: {fileID: 0}
   m_Cam: {fileID: 0}
+  m_PlayerManager: {fileID: 0}
   maxVelocityChange: 10
   velocity: {x: 0, y: 0, z: 0}
-  m_PlayerNumber: 0
-  Horizontal: 0
-  Vertical: 0
 --- !u!1 &1369333128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,9 +1055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b200b980f308d42abd81bfdafbb415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Health: 0
-  m_AssociatedMesh: {fileID: 0}
-  m_Col: {fileID: 0}
 --- !u!1 &1523065524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1101,7 @@ MonoBehaviour:
   m_Health: 0
   m_AssociatedMesh: {fileID: 0}
   m_Col: {fileID: 0}
+  m_Working: 0
 --- !u!1 &1582439314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1148,7 @@ MonoBehaviour:
   m_Health: 0
   m_AssociatedMesh: {fileID: 0}
   m_Col: {fileID: 0}
+  m_Working: 0
 --- !u!1 &1763451509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,8 +1293,6 @@ MonoBehaviour:
   m_Deadzone: 0.05
   m_Rib: {fileID: 0}
   m_Cam: {fileID: 0}
+  m_PlayerManager: {fileID: 0}
   maxVelocityChange: 10
   velocity: {x: 0, y: 0, z: 0}
-  m_PlayerNumber: 0
-  Horizontal: 0
-  Vertical: 0
