@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         m_Rib = GetComponent<Rigidbody>();
+        m_PlayerManager = GetComponent<PlayerManager>();
         x = 0.0f;
         y = 0.0f;
         internalSpeed = m_Speed;

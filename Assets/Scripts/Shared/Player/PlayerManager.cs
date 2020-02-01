@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_PlayerCombat = GetComponent<PlayerCombat>();
         m_PlayerCombat.m_PlayerManager = this;
+        m_PlayerCombat.SetPlayerManagerLimbs();
         m_PlayerMovement = GetComponent<PlayerMovement>();
         m_PlayerMovement.m_PlayerManager = this;
     }
@@ -50,6 +51,7 @@ public class PlayerManager : MonoBehaviour
 
     void OnRightPunch()
     {
+        Debug.Log("Pressed RB");
         m_PlayerCombat.DoRightArmAttack();
     }
 
@@ -61,5 +63,10 @@ public class PlayerManager : MonoBehaviour
     void OnLeftKick()
     {
 
+    }
+
+    public void DoDamage(int amount)
+    {
+        m_PlayerCombat.DoRandomDamage(amount);
     }
 }

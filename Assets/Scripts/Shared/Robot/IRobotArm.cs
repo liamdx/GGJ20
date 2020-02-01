@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class IRobotArm : IRobotPart
+public class IRobotArm : IRobotPart
 {
-    public abstract void DoAttack();
+    public virtual void DoAttack(Transform t) { }
 
 }

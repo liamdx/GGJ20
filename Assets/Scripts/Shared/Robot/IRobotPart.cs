@@ -8,20 +8,21 @@ public class IRobotPart : MonoBehaviour
     public int m_Health;
     public Mesh m_AssociatedMesh;
     public BoxCollider m_Col;
-    public bool m_Working;
+    public bool m_LimbBroken;
+    public PlayerManager thisPM;
 
     private Mesh gameplayMesh;
     private MeshRenderer meshRenderer;
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private MeshFilter meshFilter;
     private const int numBreakOffMeshes = 3;
-    private bool limbBroken;
+    
 
     private List<GameObject> destructibleMeshes;
 
     private void Start()
     {
-        limbBroken = false;
+        m_LimbBroken = false;
         m_Col = GetComponent<BoxCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
         skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
@@ -60,12 +61,12 @@ public class IRobotPart : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!limbBroken)
+        if (!m_LimbBroken)
         {
             if (m_Health <= 0)
             {
                 RemoveLimb();
-                limbBroken = true;
+                m_LimbBroken = true;
             }
         }
     }
