@@ -8,24 +8,32 @@ enum GameState {
     Menu,
     Repair,
     Combat,
-    GameOver
 };
 
-public class GameManager : MonoBehaviour{
+public class GameManager : MonoBehaviour {
 
     public int rounds;
     public List<PlayerManager> players;
+    public int[] score = {0,0,0,0};
     public Camera mainCam;
 
     private int currentRound;
     private GameState state;
     private PlayerInputManager playerInputManager;
+    
 
     private void Awake()
     {
-        state = GameState.Repair;
+        SetGameState(GameState.Menu);
         
     }
+
+    private void SetGameState(GameState newState)
+    {
+        OnGameStateChanged(newState, state);
+        state = newState;
+    }
+
 
     public void OnPlayerJoined()
     {
@@ -43,36 +51,51 @@ public class GameManager : MonoBehaviour{
         }
     }
 
-    public void OnPlayerDied(PlayerManager player) {
+    private void OnGameStateChanged(GameState newState, GameState oldState)
+    {
         
+        if(newState == GameState.Repair)
+        {
+            // show repair UI
+            // disable combat
+        }
+        if(newState == GameState.Combat)
+        {
+            // hide repair UI
+            // 
+        }
+        if(newState == GameState.Menu)
+        {
+            // load menu scene
+        }
     }
+
+
+    public void OnPlayerDied()
+    {
+        int numPlayersAlive = 0;
+        int lastAlivePlayerNumber = 0;
+
+        foreach(PlayerManager player in players)
+        {
+            if (player.IsAlive)
+            {
+                numPlayersAlive += 1;
+                lastAlivePlayerNumber = player.m_PlayerNumber;
+            }
+        }
+
+        if(numPlayersAlive == 1)
+        {
+            // Show round won by player color
+            SetGameState(GameState.Repair);
+        }
+    }
+
+
 
     public void OnPlayerLeft()
     {
         Debug.Log("Player Left");
     }
-
-
-
-    private void LateUpdate()
-    {
-
-        if(state == GameState.Repair)
-        {
-
-        }
-        if(state == GameState.Combat)
-        {
-
-        }
-        if(state == GameState.GameOver)
-        {
-
-        }
-        if(state == GameState.Menu)
-        {
-            // load main menu scene
-        }
-    }
-
 }
