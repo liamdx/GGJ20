@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6934178787687463276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1867320775041919373, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_Name
+      value: BaseAnimatedRobot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.234
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.02148017
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9996574
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0149617195
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000002375559
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.7140001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 179.96301
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436624202650770334, guid: 0a28d24290c2137498666587a2d8397a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.4620001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a28d24290c2137498666587a2d8397a, type: 3}
