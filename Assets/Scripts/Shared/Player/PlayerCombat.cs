@@ -31,6 +31,15 @@ public class PlayerCombat : MonoBehaviour
     {
         effect = psGo.GetComponent<ParticleSystem>();
         effect.Stop();
+        psGo.SetActive(false);
+    }
+
+    private void LateUpdate()
+    {
+        if(effect.isStopped)
+        {
+            psGo.SetActive(false);
+        }
     }
 
 
@@ -56,7 +65,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void DoRandomDamage(int amount)
     {
-        int ran = Random.Range(0, 7);
+        int ran = Random.Range(0, 6);
 
         Debug.Log("Random Value : " + ran);
 
@@ -82,11 +91,6 @@ public class PlayerCombat : MonoBehaviour
         }
         else if (ran > 4 && ran <= 5)
         {
-            m_Torso.m_Health -= amount;
-            HandleHitEffect(m_Torso.transform.position);
-        }
-        else if (ran > 5 && ran <= 6)
-        {
             m_Head.m_Health -= amount;
             HandleHitEffect(m_Head.transform.position);
         }
@@ -110,8 +114,9 @@ public class PlayerCombat : MonoBehaviour
 
     public void HandleHitEffect(Vector3 position)
     {
+        psGo.SetActive(true);
         effect.Stop();
-        effect.gameObject.transform.position = position;
+        psGo.transform.position = position;
         effect.Play();
     }
 
