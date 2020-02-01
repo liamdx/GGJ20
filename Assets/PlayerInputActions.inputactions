@@ -20,6 +20,46 @@
                     "expectedControlType": "Stick",
                     "processors": "InvertVector2",
                     "interactions": ""
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "c2bffd91-9559-4702-adb3-35c1ed931077",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightPunch",
+                    "type": "Button",
+                    "id": "916378f0-bbcd-417d-bf09-b5694eb03e22",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftPunch",
+                    "type": "Button",
+                    "id": "e8f461f8-89d5-44a8-bfbd-35bb34da34d5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightKick",
+                    "type": "Button",
+                    "id": "4c18b206-b103-4e0a-b0f9-f6634b7c8f25",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftKick",
+                    "type": "Button",
+                    "id": "2d980789-2a2f-48d7-bc17-a709aaef6e00",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -42,6 +82,61 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Vertical",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97905003-c5b8-4179-bf7f-2b549eec760d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a90d8f4d-9261-4ab6-ba37-026b82107073",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "549f2373-25ab-44e0-94e8-0217cebc2f46",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8dbd7c3b-b293-4900-82c6-b98369eb31f4",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc476ecb-775e-44a9-887e-8a6805043611",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftKick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

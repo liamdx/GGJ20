@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_Deadzone = 0.05f;
     public Rigidbody m_Rib;
     public Camera m_Cam;
+    public PlayerManager m_PlayerManager;
 
 
     public float maxVelocityChange = 10.0f;
@@ -22,21 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private Transform camTransform;
     public Vector3 velocity;
     private PlayerInput input;
-
-    public int m_PlayerNumber;
-
-    public float Horizontal;
-    public float Vertical;
-
-    void OnHorizontal(InputValue value)
-    {
-        Horizontal = value.Get<float>();
-    }
-
-    void OnVertical(InputValue value)
-    {
-        Vertical = value.Get<float>();
-    }
 
     private void Awake()
     {
@@ -60,8 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        x = Horizontal;
-        y = Vertical;
+        x = m_PlayerManager.Horizontal;
+        y = m_PlayerManager.Vertical;
+        isSprinting = m_PlayerManager.Sprinting;
 
         // isSprinting = input.GetA();
         if(m_Cam != null)
@@ -101,11 +88,23 @@ public class PlayerMovement : MonoBehaviour
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
                 velocityChange.y = 0;
                 m_Rib.AddForce(velocityChange, ForceMode.VelocityChange);
+
+                this.transform.rotation = Quaternion.LookRotation(velocity);
+            }
+            else
+            {
+                Vector3 targetVelocity = Vector3.zero;
+                velocity = m_Rib.velocity;
+                Vector3 velocityChange = (targetVelocity - velocity);
+                velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+                velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+                velocityChange.y = 0;
+                m_Rib.AddForce(velocityChange, ForceMode.VelocityChange);
             }
 
         }
 
-        this.transform.rotation = Quaternion.LookRotation(velocity);
+        
 
     }
 }

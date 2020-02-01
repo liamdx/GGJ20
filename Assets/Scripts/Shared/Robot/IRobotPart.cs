@@ -8,6 +8,7 @@ public class IRobotPart : MonoBehaviour
     public int m_Health;
     public Mesh m_AssociatedMesh;
     public BoxCollider m_Col;
+    public bool m_Working;
 
     private Mesh gameplayMesh;
     private MeshRenderer meshRenderer;
