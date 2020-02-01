@@ -6,10 +6,7 @@ public class RobotSkeleton : MonoBehaviour
 {
     Dictionary<string, int> m_Parameters;
 
-    IRobotHead m_Head;
-    IRobotCore m_Core;
-    IRobotLeg m_Legs;
-    IRobotArm m_Arms;
+    public List<IRobotPart> parts;
 
     private void Awake()
     {

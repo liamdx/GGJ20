@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class IRobotCore : IRobotPart
 {
-    public BoxCollider m_Col;
+
 }
