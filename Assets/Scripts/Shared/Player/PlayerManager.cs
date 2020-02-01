@@ -14,13 +14,14 @@ public class PlayerManager : MonoBehaviour
     public bool LeftArmAttack;
     public bool RightLegAttack;
     public bool LeftLegAttack;
+    public bool IsAlive;
 
     private PlayerCombat m_PlayerCombat;
     private PlayerMovement m_PlayerMovement;
 
-
     private void Awake()
     {
+        m_PlayerNumber = -1;
         m_PlayerCombat = GetComponent<PlayerCombat>();
         m_PlayerCombat.m_PlayerManager = this;
         m_PlayerCombat.SetPlayerManagerLimbs();
@@ -46,13 +47,20 @@ public class PlayerManager : MonoBehaviour
 
     void OnLeftPunch()
     {
-        m_PlayerCombat.DoLeftArmAttack();
+        if (IsAlive)
+        {
+            // play punch animation
+            m_PlayerCombat.DoLeftArmAttack();
+        }
     }
 
     void OnRightPunch()
     {
-        Debug.Log("Pressed RB");
-        m_PlayerCombat.DoRightArmAttack();
+        if (IsAlive)
+        {
+            // play punch animation
+            m_PlayerCombat.DoRightArmAttack();
+        }
     }
 
     void OnRightKick()
@@ -68,5 +76,10 @@ public class PlayerManager : MonoBehaviour
     public void DoDamage(int amount)
     {
         m_PlayerCombat.DoRandomDamage(amount);
+    }
+
+    public void Die()
+    {
+        IsAlive = false;
     }
 }

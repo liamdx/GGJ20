@@ -1,39 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
-
-enum GameState
-{
+enum GameState {
     Menu,
     Repair,
     Combat,
     GameOver
 };
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour{
 
     public int rounds;
-    public PlayerManager[] players;
+    public List<PlayerManager> players;
     public Camera mainCam;
 
     private int currentRound;
     private GameState state;
+    private PlayerInputManager playerInputManager;
 
     private void Awake()
     {
         state = GameState.Repair;
+        
     }
 
-    public void UpdatePlayerList()
+    public void OnPlayerJoined()
     {
-        players = FindObjectsOfType<PlayerManager>();
+        Debug.Log("Player Joiend");
+        PlayerManager[] pms = FindObjectsOfType<PlayerManager>();
+
+        foreach(PlayerManager pm in pms)
+        {
+            if(pm.m_PlayerNumber == -1)
+            {
+                pm.m_PlayerNumber = players.Count + 1;
+                players.Add(pm);
+                pm.IsAlive = true;
+            }
+        }
     }
+
+    public void OnPlayerDied(PlayerManager player) {
+        
+    }
+
+    public void OnPlayerLeft()
+    {
+        Debug.Log("Player Left");
+    }
+
+
 
     private void LateUpdate()
     {
-        UpdatePlayerList();
 
         if(state == GameState.Repair)
         {
