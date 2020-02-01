@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Mathf.Abs(x) > m_Deadzone || Mathf.Abs(y) > m_Deadzone)
             {
+                m_PlayerManager.m_Anim.SetBool("running", true);
                 // mvoement is relative to CAMERA direction
                 Vector3 forward = camTransform.forward;
                 Vector3 right = camTransform.right;
@@ -94,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                m_PlayerManager.m_Anim.SetBool("running", false);
                 Vector3 targetVelocity = Vector3.zero;
                 velocity = m_Rib.velocity;
                 Vector3 velocityChange = (targetVelocity - velocity);

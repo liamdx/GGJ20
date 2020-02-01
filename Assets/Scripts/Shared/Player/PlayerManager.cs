@@ -18,15 +18,18 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerCombat m_PlayerCombat;
     private PlayerMovement m_PlayerMovement;
+    public Animator m_Anim;
 
     private void Awake()
     {
         m_PlayerNumber = -1;
+        IsAlive = true;
         m_PlayerCombat = GetComponent<PlayerCombat>();
         m_PlayerCombat.m_PlayerManager = this;
         m_PlayerCombat.SetPlayerManagerLimbs();
         m_PlayerMovement = GetComponent<PlayerMovement>();
         m_PlayerMovement.m_PlayerManager = this;
+        m_Anim = GetComponent<Animator>();
     }
 
 
