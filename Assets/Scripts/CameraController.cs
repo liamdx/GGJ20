@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        m_Targs = FindObjectsOfType<PlayerMovement>();
+
         if (m_Targs.Length==0)
         {return;}
 
