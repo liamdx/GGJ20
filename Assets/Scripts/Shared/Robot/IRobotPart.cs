@@ -11,6 +11,8 @@ public class IRobotPart : MonoBehaviour
     public bool m_LimbBroken;
     public PlayerManager thisPM;
 
+    public GameObject pickup;
+
     private Mesh gameplayMesh;
     private MeshRenderer meshRenderer;
     private SkinnedMeshRenderer skinnedMeshRenderer;
@@ -85,7 +87,7 @@ public class IRobotPart : MonoBehaviour
         {
             if (m_Health <= 0)
             {
-                RemoveLimb();
+                ProvidePickup();
                 m_LimbBroken = true;
             }
         }
@@ -110,6 +112,18 @@ public class IRobotPart : MonoBehaviour
         rib.AddForce(GenRandomDirection() * 20.0f);
         DestoyN destroyer = destructible.GetComponent<DestoyN>();
         destroyer.Destroy(3.0f);
+
+    }
+
+    void ProvidePickup()
+    {
+        Vector3 randomPos = GenRandomDirection() * 5;
+        randomPos.y = 0.0f;
+
+        Vector3 finalPosition = transform.position + randomPos;
+        GameObject go = GameObject.Instantiate(pickup, randomPos, Quaternion.identity);
+        Rigidbody rib = go.AddComponent<Rigidbody>();
+        rib.AddForce(GenRandomDirection() * 3);
 
     }
 

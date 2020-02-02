@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e391f00234292cc4f935308c11cf0e54, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -602,7 +602,7 @@ Transform:
   - {fileID: 1532956083}
   - {fileID: 1123023369}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1711347667
 Mesh:
@@ -1579,7 +1579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: b0084b19f697bd6499230ab11d4c023c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1629,7 +1629,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6436181610326823812, guid: ad60a3e97d9c3984db255ffddd9f9216,
+    - target: {fileID: 2260638961032381497, guid: ad60a3e97d9c3984db255ffddd9f9216,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 2620631376932205240, guid: ad60a3e97d9c3984db255ffddd9f9216,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 4474909151273381329, guid: ad60a3e97d9c3984db255ffddd9f9216,
         type: 3}
       propertyPath: cam
       value: 
@@ -1677,7 +1687,7 @@ PrefabInstance:
     - target: {fileID: 6436181610469518491, guid: ad60a3e97d9c3984db255ffddd9f9216,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6436181610469518491, guid: ad60a3e97d9c3984db255ffddd9f9216,
         type: 3}
@@ -1750,16 +1760,6 @@ PrefabInstance:
       value: RepairUI
       objectReference: {fileID: 0}
     - target: {fileID: 6436181610581180475, guid: ad60a3e97d9c3984db255ffddd9f9216,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 963194227}
-    - target: {fileID: 6436181611530084827, guid: ad60a3e97d9c3984db255ffddd9f9216,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 963194227}
-    - target: {fileID: 6436181612108931009, guid: ad60a3e97d9c3984db255ffddd9f9216,
         type: 3}
       propertyPath: cam
       value: 
