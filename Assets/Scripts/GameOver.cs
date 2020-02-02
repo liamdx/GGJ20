@@ -10,7 +10,23 @@ public class GameOver : MonoBehaviour
 
     void Start()
     {
-        text.text = PlayerColors.getColorNameByPlayer(winningPlayer) + "Wins";
+        text.text = PlayerColors.getColorNameByPlayer(winningPlayer) + " Wins";
         text.color = PlayerColors.getColorByPlayer(winningPlayer);
+        StartCoroutine(StartCountdown());
+    }
+
+    float currCountdownValue;
+    public IEnumerator StartCountdown(float countdownValue = 5)
+    {
+        currCountdownValue = countdownValue;
+        while (currCountdownValue > 0)
+        {
+            Debug.Log("Countdown to main menu: " + currCountdownValue);
+            yield return new WaitForSeconds(1.0f);
+            currCountdownValue--;
+        }
+
+        Debug.Log("Main menu");
+        // load main menu
     }
 }
