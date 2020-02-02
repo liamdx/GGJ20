@@ -6,6 +6,8 @@ public class PlayerCombat : MonoBehaviour
 {
     public PlayerManager m_PlayerManager;
 
+    public bool m_CanAttack = true;
+
     public IRobotArm m_LeftArm;
     public IRobotArm m_RightArm;
     public IRobotLeg m_LeftLeg;
@@ -25,6 +27,16 @@ public class PlayerCombat : MonoBehaviour
         m_RightLeg.thisPM = m_PlayerManager;
         m_Torso.thisPM = m_PlayerManager;
         m_Head.thisPM = m_PlayerManager;
+    }
+
+    public void SetLimbsNotBroken()
+    {
+        m_LeftArm.m_LimbBroken = false;
+        m_RightArm.m_LimbBroken = false;
+        m_LeftLeg.m_LimbBroken = false;
+        m_RightLeg.m_LimbBroken = false;
+        m_Torso.m_LimbBroken = false;
+        m_Head.m_LimbBroken = false;
     }
 
     private void UpdatePlayerManagerLimbHealth()
@@ -77,12 +89,18 @@ public class PlayerCombat : MonoBehaviour
 
     public void DoRightArmAttack()
     {
-        m_RightArm.DoAttack(this.transform);
+        if (m_CanAttack)
+        {
+            m_RightArm.DoAttack(this.transform);
+        }
     }
 
     public void DoLeftArmAttack()
     {
-        m_LeftArm.DoAttack(this.transform);
+        if (m_CanAttack)
+        {
+            m_LeftArm.DoAttack(this.transform);
+        }
     }
 
     private void DoLeftLegAttack()
@@ -144,6 +162,27 @@ public class PlayerCombat : MonoBehaviour
         HandleHitEffect(m_Torso.transform.position);       
         m_Head.m_Health = 0;
         HandleHitEffect(m_Head.transform.position);
+    }
+
+    public void AddHealthToParts(int amount)
+    {
+        m_LeftArm.m_Health += amount;
+        m_RightArm.m_Health += amount;
+        m_LeftLeg.m_Health += amount;
+        m_RightLeg.m_Health += amount;
+        m_Torso.m_Health += amount;
+        m_Head.m_Health += amount;
+        
+    }
+
+    public void SetHealthAllParts(int amount)
+    {
+        m_LeftArm.m_Health = amount;
+        m_RightArm.m_Health = amount;
+        m_LeftLeg.m_Health = amount;
+        m_RightLeg.m_Health = amount;
+        m_Torso.m_Health = amount;
+        m_Head.m_Health = amount;
     }
 
     public void HandleHitEffect(Vector3 position)

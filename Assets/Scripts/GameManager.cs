@@ -15,18 +15,33 @@ public class GameManager : MonoBehaviour {
 
     public int rounds;
     public List<PlayerManager> players;
+    public List<Transform> spawns;
     public int[] score = {0,0,0,0};
     public Camera mainCam;
 
     private int currentRound;
     private GameState state;
     private PlayerInputManager playerInputManager;
-    
+    public RepairUIManager repairUImanager;
+
+    public InputAction i;
+
+
 
     private void Awake()
     {
         SetGameState(GameState.Menu);
+
         
+    }
+
+    void DoRoundReset()
+    {
+        foreach(PlayerManager p in players)
+        {
+            int index = (int) Random.Range(0, spawns.Count);
+            p.ResetPlayer(spawns[index].position);
+        }
     }
 
     private void SetGameState(GameState newState)
@@ -59,6 +74,7 @@ public class GameManager : MonoBehaviour {
         {
             // show repair UI
             // disable combat
+            DoRoundReset();
         }
         if(newState == GameState.Combat)
         {
