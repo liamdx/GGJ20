@@ -65,6 +65,17 @@
                     "name": "RepairArms",
                     "type": "Button",
                     "id": "59e99011-0146-478a-91c5-613005514417",
+<<<<<<< HEAD
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "3dceb0ad-d6b4-4ed9-a3b4-9d966f603301",
+=======
+>>>>>>> 875ead5f6b6f0abd2c88effdf727ca3dc3cf8652
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -130,6 +141,12 @@
                     "name": "",
                     "id": "efa45936-13fc-414d-9736-c92ac220337b",
                     "path": "<Gamepad>/buttonWest",
+<<<<<<< HEAD
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RepairHealth",
+=======
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -139,6 +156,19 @@
                 },
                 {
                     "name": "",
+                    "id": "0e1940e2-d887-40e9-bfb6-795e4a708fe5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RepairLegs",
+>>>>>>> 875ead5f6b6f0abd2c88effdf727ca3dc3cf8652
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+<<<<<<< HEAD
                     "id": "0e1940e2-d887-40e9-bfb6-795e4a708fe5",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -156,6 +186,25 @@
                     "processors": "",
                     "groups": "",
                     "action": "RepairArms",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e19d42cc-91a1-423b-b50d-1bf618a9c4a2",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+=======
+                    "id": "f77f2bba-0c3a-4274-adbb-efc08096b4e6",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RepairArms",
+>>>>>>> 875ead5f6b6f0abd2c88effdf727ca3dc3cf8652
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

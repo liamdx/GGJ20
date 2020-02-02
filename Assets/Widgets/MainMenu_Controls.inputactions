@@ -1,0 +1,39 @@
+{
+    "name": "MainMenu_Controls",
+    "maps": [
+        {
+            "name": "MainMenu",
+            "id": "f80e9043-2458-476f-ba43-0266b82627f0",
+            "actions": [
+                {
+                    "name": "PlayGame",
+                    "type": "Button",
+                    "id": "43f19491-4ccb-40f0-976d-96c5845156ca",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dee8f570-2a41-4d5b-8c6a-f210b5867773",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "MenuScheme",
+                    "action": "PlayGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "MenuScheme",
+            "bindingGroup": "MenuScheme",
+            "devices": []
+        }
+    ]
+}
