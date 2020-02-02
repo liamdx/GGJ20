@@ -158,8 +158,22 @@ public class GameManager : MonoBehaviour {
                 SetGameState(GameState.Repair);
             }
         } else {
+
             // game over
             // load game over scene
+            int highestIndex = score.IndexOf(score.Max());
+
+            switch (highestIndex)
+            {   
+                case 0:
+                    // open scene named "1Wins"
+                case 1:
+                    // open scene named "2Wins"
+                case 2:
+                    // open scene named "3Wins"
+                case 3:
+                    // open scene named "4Wins"
+            }
         }
     }
 
