@@ -44,14 +44,19 @@ public class GameManager : MonoBehaviour {
 
     void DoRoundReset()
     {
+        List<int> usedIndexes = new List<int>();
         foreach(PlayerManager p in players)
         {
             int index = (int) Random.Range(0, spawns.Count);
+            while(usedIndexes.Contains(index) == true)
+            {
+                index = (int)Random.Range(0, spawns.Count);
+            }
+
             p.ResetPlayer(spawns[index].position);
         }
 
         repairUImanager.EnableRepairUI();
-        internalCountdownTimer = countdownTimer;
     }
 
     void DoBeginRound() 
@@ -70,15 +75,13 @@ public class GameManager : MonoBehaviour {
         state = newState;
     }
 
-
-    public void OnPlayerJoined()
+    public void LocatePlayers()
     {
-        Debug.Log("Player Joiend");
-        PlayerManager[] pms = FindObjectsOfType<PlayerManager>();
+        PlayerManager[] pms = GameObject.FindObjectsOfType<PlayerManager>();
 
-        foreach(PlayerManager pm in pms)
+        foreach (PlayerManager pm in pms)
         {
-            if(pm.m_PlayerNumber == -1)
+            if (pm.m_PlayerNumber == -1)
             {
                 pm.m_PlayerNumber = players.Count + 1;
                 players.Add(pm);
@@ -89,13 +92,21 @@ public class GameManager : MonoBehaviour {
         repairUImanager.AttachPlayersToUI();
     }
 
+    public void OnPlayerJoined()
+    {
+        Debug.Log("Player Joiend");
+        
+    }
+
     private void LateUpdate()
     {
+        LocatePlayers();
         if (state != GameState.Combat)
         {
+            internalCountdownTimer -= Time.deltaTime;
             if (internalCountdownTimer <= 0.0f)
             {
-                OnGameStateChanged(GameState.Combat, state);
+                SetGameState(GameState.Combat);
             }
         }
     }
@@ -111,6 +122,7 @@ public class GameManager : MonoBehaviour {
         }
         if(newState == GameState.Combat)
         {
+            internalCountdownTimer = countdownTimer;
             DoBeginRound();
         }
         if(newState == GameState.Menu)

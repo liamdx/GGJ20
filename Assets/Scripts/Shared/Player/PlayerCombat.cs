@@ -75,7 +75,7 @@ public class PlayerCombat : MonoBehaviour
         effect = psGo.GetComponent<ParticleSystem>();
         effect.Stop();
         psGo.SetActive(false);
-        m_CanAttack = true;
+        m_CanAttack = false;
     }
 
     private void LateUpdate()
