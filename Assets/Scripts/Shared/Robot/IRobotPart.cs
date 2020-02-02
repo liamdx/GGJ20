@@ -20,7 +20,7 @@ public class IRobotPart : MonoBehaviour
 
     private List<GameObject> destructibleMeshes;
 
-    private void Start()
+    private void Awake()
     {
         m_LimbBroken = false;
         m_Col = GetComponent<BoxCollider>();
@@ -30,13 +30,27 @@ public class IRobotPart : MonoBehaviour
         if (skinnedMeshRenderer == null)
         {
             meshFilter = GetComponent<MeshFilter>();
-            m_AssociatedMesh = meshFilter.mesh;
-            gameplayMesh = meshFilter.mesh;
+            if (m_AssociatedMesh != null)
+            {
+                m_AssociatedMesh = meshFilter.mesh;
+                gameplayMesh = meshFilter.mesh;
+            }
+            else
+            {
+                gameplayMesh = m_AssociatedMesh;
+            }
         }
         else
         {
-            m_AssociatedMesh = skinnedMeshRenderer.sharedMesh;
-            gameplayMesh = skinnedMeshRenderer.sharedMesh;
+            if (m_AssociatedMesh != null)
+            {
+                m_AssociatedMesh = skinnedMeshRenderer.sharedMesh;
+                gameplayMesh = skinnedMeshRenderer.sharedMesh;
+            }
+            else
+            {
+                gameplayMesh = skinnedMeshRenderer.sharedMesh;
+            }
         }
 
         destructibleMeshes = new List<GameObject>();
@@ -72,44 +86,25 @@ public class IRobotPart : MonoBehaviour
     }
 
     void RemoveLimb()
-    {
-        if (skinnedMeshRenderer == null)
-        {
-            meshRenderer.enabled = false;
-            m_Col.enabled = false;
-            m_Col.isTrigger = true;
-            GameObject destructible = destructibleMeshes[0];
-            destructible.SetActive(true);
-            destructible.transform.position = transform.position;
-            destructible.transform.eulerAngles = transform.eulerAngles;
-            MeshRenderer mr = destructible.GetComponent<MeshRenderer>();
-            mr.material = meshRenderer.material;
-            mr.enabled = true;
-            Rigidbody rib = destructible.GetComponent<Rigidbody>();
-            rib.isKinematic = false;
-            rib.AddForce(GenRandomDirection() * 250.0f);
-            DestoyN destroyer = destructible.GetComponent<DestoyN>();
-            destroyer.Destroy(3.0f);
-        }
-        else
-        {
-            skinnedMeshRenderer.enabled = false;
-            m_Col.enabled = false;
-            m_Col.isTrigger = true;
-            GameObject destructible = destructibleMeshes[0];
-            destructible.SetActive(true);
-            destructible.transform.position = transform.position;
-            destructible.transform.eulerAngles = transform.eulerAngles;
-            MeshRenderer mr = destructible.GetComponent<MeshRenderer>();
-            mr.material = skinnedMeshRenderer.material;
-            mr.enabled = true;
-            Rigidbody rib = destructible.GetComponent<Rigidbody>();
-            rib.isKinematic = false;
-            rib.AddForce(GenRandomDirection() * 250.0f);
-            DestoyN destroyer = destructible.GetComponent<DestoyN>();
-            destroyer.Destroy(3.0f);
-        }
-        
+    {       
+        Debug.Log("Found skinned mesh renderer");
+        skinnedMeshRenderer.enabled = false;
+        m_Col.enabled = false;
+        m_Col.isTrigger = true;
+        GameObject destructible = destructibleMeshes[0];
+        destructible.SetActive(true);
+        destructible.transform.position = transform.TransformPoint(transform.position);
+        destructible.transform.eulerAngles = transform.eulerAngles;
+        destructible.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        MeshRenderer mr = destructible.GetComponent<MeshRenderer>();
+        mr.material = skinnedMeshRenderer.material;
+        mr.enabled = true;
+        Rigidbody rib = destructible.GetComponent<Rigidbody>();
+        rib.isKinematic = false;
+        rib.AddForce(GenRandomDirection() * 20.0f);
+        DestoyN destroyer = destructible.GetComponent<DestoyN>();
+        destroyer.Destroy(3.0f);
+
     }
 
     Vector3 GenRandomDirection()

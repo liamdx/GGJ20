@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerCombat m_PlayerCombat;
     private PlayerMovement m_PlayerMovement;
+    private GameManager m_GameManager;
     public Animator m_Anim;
 
     private void Awake()
@@ -30,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         m_PlayerMovement = GetComponent<PlayerMovement>();
         m_PlayerMovement.m_PlayerManager = this;
         m_Anim = GetComponent<Animator>();
+        m_GameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -84,5 +86,6 @@ public class PlayerManager : MonoBehaviour
     public void Die()
     {
         IsAlive = false;
+        m_GameManager.OnPlayerDied();
     }
 }

@@ -27,6 +27,38 @@ public class PlayerCombat : MonoBehaviour
         m_Head.thisPM = m_PlayerManager;
     }
 
+    private void UpdatePlayerManagerLimbHealth()
+    {
+        int deadLimbs = 0;
+
+        if(m_LeftArm.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_RightArm.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_LeftLeg.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_RightLeg.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_Head.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+
+        if(deadLimbs >= 2)
+        {
+            m_PlayerManager.Die();
+        }
+
+    }
+
     private void Awake()
     {
         effect = psGo.GetComponent<ParticleSystem>();
@@ -94,6 +126,8 @@ public class PlayerCombat : MonoBehaviour
             m_Head.m_Health -= amount;
             HandleHitEffect(m_Head.transform.position);
         }
+
+        UpdatePlayerManagerLimbHealth();
     }
 
     public void DestroyAllParts()

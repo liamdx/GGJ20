@@ -5,8 +5,9 @@ using UnityEngine;
 public class RobotPunch : IRobotArm
 {
 
-    public int damage;
-    public float cooldown = 0.5f;
+    public int damage = 50;
+    public float distance = 1f;
+    public float cooldown = 1f;
     public const string rp = "r_punch";
     public const string lp = "l_punch";
     public bool isLeft;
@@ -28,7 +29,7 @@ public class RobotPunch : IRobotArm
 
             Vector3 p1 = t.position + new Vector3(0, 2.5f, 0);
             RaycastHit[] hit;
-            hit = Physics.SphereCastAll(p1, 3.0f, t.forward, 30);
+            hit = Physics.SphereCastAll(p1, 0.5f, t.forward, distance);
             foreach (RaycastHit h in hit)
             {
                 if (h.collider.gameObject.GetComponent<PlayerManager>())
@@ -46,7 +47,7 @@ public class RobotPunch : IRobotArm
         }
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if(internalCooldown >= 0.0f)
         {

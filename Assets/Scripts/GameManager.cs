@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 enum GameState {
     Menu,
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour {
         if(newState == GameState.Menu)
         {
             // load menu scene
+            // SceneManager.LoadScene(0);
         }
     }
 
