@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 5865019891504231369}
   - component: {fileID: 5865019891504231375}
   - component: {fileID: 5865019891504231368}
+  - component: {fileID: 463977053}
   m_Layer: 8
   m_Name: RoboAnim
   m_TagString: Untagged
@@ -750,6 +751,7 @@ MonoBehaviour:
   IsAlive: 0
   m_PlayerCombat: {fileID: 0}
   m_PlayerMovement: {fileID: 0}
+  m_GameManager: {fileID: 0}
   m_Anim: {fileID: 0}
 --- !u!114 &5865019891504231368
 MonoBehaviour:
@@ -772,6 +774,18 @@ MonoBehaviour:
   m_Torso: {fileID: 72681188546935132}
   m_Head: {fileID: 6643196912399586247}
   psGo: {fileID: 2881384567481387152}
+--- !u!114 &463977053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865019891504231365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd70db8382fe14b8c981c1944c71cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6643196912399586240
 GameObject:
   m_ObjectHideFlags: 0

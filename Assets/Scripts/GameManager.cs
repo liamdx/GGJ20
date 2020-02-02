@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
 
     void DoRoundReset()
     {
+
         List<int> usedIndexes = new List<int>();
         foreach(PlayerManager p in players)
         {
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour {
             p.ResetPlayer(spawns[index].position);
         }
 
-        repairUImanager.EnableRepairUI();
+        
     }
 
     void DoBeginRound() 
@@ -108,6 +109,14 @@ public class GameManager : MonoBehaviour {
             {
                 SetGameState(GameState.Combat);
             }
+        }
+        if(state == GameState.Repair)
+        {
+            repairUImanager.EnableRepairUI();
+        }
+        else
+        {
+            repairUImanager.DisableRepairUI();
         }
     }
 

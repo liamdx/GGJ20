@@ -46,17 +46,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RightKick",
+                    "name": "RepairHealth",
                     "type": "Button",
-                    "id": "4c18b206-b103-4e0a-b0f9-f6634b7c8f25",
+                    "id": "e29e1cbe-6e19-49a7-b76f-e31997f4ce46",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "LeftKick",
+                    "name": "RepairLegs",
                     "type": "Button",
-                    "id": "2d980789-2a2f-48d7-bc17-a709aaef6e00",
+                    "id": "5c7a19af-b456-4ee7-a96d-3ef00faa9d7c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RepairArms",
+                    "type": "Button",
+                    "id": "59e99011-0146-478a-91c5-613005514417",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -120,23 +128,34 @@
                 },
                 {
                     "name": "",
-                    "id": "8dbd7c3b-b293-4900-82c6-b98369eb31f4",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "efa45936-13fc-414d-9736-c92ac220337b",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RightKick",
+                    "action": "RepairHealth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bc476ecb-775e-44a9-887e-8a6805043611",
-                    "path": "<Gamepad>/leftShoulder",
+                    "id": "0e1940e2-d887-40e9-bfb6-795e4a708fe5",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftKick",
+                    "action": "RepairLegs",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f77f2bba-0c3a-4274-adbb-efc08096b4e6",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RepairArms",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
