@@ -32,6 +32,9 @@ public class PlayerManager : MonoBehaviour
         m_PlayerMovement.m_PlayerManager = this;
         m_Anim = GetComponent<Animator>();
         m_GameManager = FindObjectOfType<GameManager>();
+        m_PlayerMovement.m_Rib.isKinematic = true;
+        transform.position = m_GameManager.GetSpawnPoint();
+        m_PlayerMovement.m_Rib.isKinematic = false;
     }
 
     public void ResetPlayer(Vector3 startPosition)

@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour {
         repairUImanager.AttachPlayersToUI();
     }
 
+    public Vector3 GetSpawnPoint()
+    {
+        int index = (int)Random.Range(0, spawns.Count);
+        return spawns[index].position;
+    }
+
     void DoRoundReset()
     {
         foreach(PlayerManager p in players)
