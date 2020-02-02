@@ -16,19 +16,59 @@ public class PlayerManager : MonoBehaviour
     public bool LeftLegAttack;
     public bool IsAlive;
 
-    private PlayerCombat m_PlayerCombat;
-    private PlayerMovement m_PlayerMovement;
+    public PlayerCombat m_PlayerCombat;
+    public PlayerMovement m_PlayerMovement;
+    private GameManager m_GameManager;
+    public Animator m_Anim;
 
     private void Awake()
     {
         m_PlayerNumber = -1;
+        IsAlive = true;
         m_PlayerCombat = GetComponent<PlayerCombat>();
         m_PlayerCombat.m_PlayerManager = this;
         m_PlayerCombat.SetPlayerManagerLimbs();
         m_PlayerMovement = GetComponent<PlayerMovement>();
         m_PlayerMovement.m_PlayerManager = this;
+        m_Anim = GetComponent<Animator>();
+        m_GameManager = FindObjectOfType<GameManager>();
     }
 
+    public void ResetPlayer(Vector3 startPosition)
+    {
+        m_PlayerCombat.SetLimbsNotBroken();
+        if(!IsAlive)
+        {
+            m_PlayerCombat.SetHealthAllParts(20);
+        }
+        else
+        {
+            m_PlayerCombat.AddHealthToParts(20);
+        }
+        m_PlayerMovement.m_Rib.isKinematic = true;
+        transform.position = startPosition;
+        m_PlayerMovement.m_Rib.isKinematic = false;
+
+        SetRepairMode();
+    }
+
+    void SetRepairMode()
+    {
+        m_PlayerMovement.m_CanMove = false;
+        m_PlayerCombat.m_CanAttack = false;
+    }
+
+    void SetCombatMode()
+    {
+        m_PlayerMovement.m_CanMove = true;
+        m_PlayerCombat.m_CanAttack = true;
+    }
+
+    void SetGameOver()
+    {
+        m_PlayerMovement.m_CanMove = false;
+        m_PlayerCombat.m_CanAttack = false;
+    }
 
     void OnHorizontal(InputValue value)
     {
@@ -81,5 +121,8 @@ public class PlayerManager : MonoBehaviour
     public void Die()
     {
         IsAlive = false;
+        m_PlayerCombat.DestroyAllParts();
+        m_GameManager.OnPlayerDied();
     }
+
 }

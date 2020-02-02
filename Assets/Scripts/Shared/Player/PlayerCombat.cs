@@ -6,6 +6,8 @@ public class PlayerCombat : MonoBehaviour
 {
     public PlayerManager m_PlayerManager;
 
+    public bool m_CanAttack = true;
+
     public IRobotArm m_LeftArm;
     public IRobotArm m_RightArm;
     public IRobotLeg m_LeftLeg;
@@ -27,21 +29,78 @@ public class PlayerCombat : MonoBehaviour
         m_Head.thisPM = m_PlayerManager;
     }
 
+    public void SetLimbsNotBroken()
+    {
+        m_LeftArm.m_LimbBroken = false;
+        m_RightArm.m_LimbBroken = false;
+        m_LeftLeg.m_LimbBroken = false;
+        m_RightLeg.m_LimbBroken = false;
+        m_Torso.m_LimbBroken = false;
+        m_Head.m_LimbBroken = false;
+    }
+
+    private void UpdatePlayerManagerLimbHealth()
+    {
+        int deadLimbs = 0;
+
+        if(m_LeftArm.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_RightArm.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_LeftLeg.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_RightLeg.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+        if (m_Head.m_Health <= 0.0f)
+        {
+            deadLimbs += 1;
+        }
+
+        if(deadLimbs >= 2)
+        {
+            m_PlayerManager.Die();
+        }
+
+    }
+
     private void Awake()
     {
         effect = psGo.GetComponent<ParticleSystem>();
         effect.Stop();
+        psGo.SetActive(false);
+    }
+
+    private void LateUpdate()
+    {
+        if(effect.isStopped)
+        {
+            psGo.SetActive(false);
+        }
     }
 
 
     public void DoRightArmAttack()
     {
-        m_RightArm.DoAttack(this.transform);
+        if (m_CanAttack)
+        {
+            m_RightArm.DoAttack(this.transform);
+        }
     }
 
     public void DoLeftArmAttack()
     {
-        m_LeftArm.DoAttack(this.transform);
+        if (m_CanAttack)
+        {
+            m_LeftArm.DoAttack(this.transform);
+        }
     }
 
     private void DoLeftLegAttack()
@@ -56,7 +115,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void DoRandomDamage(int amount)
     {
-        int ran = Random.Range(0, 7);
+        int ran = Random.Range(0, 6);
 
         Debug.Log("Random Value : " + ran);
 
@@ -82,14 +141,11 @@ public class PlayerCombat : MonoBehaviour
         }
         else if (ran > 4 && ran <= 5)
         {
-            m_Torso.m_Health -= amount;
-            HandleHitEffect(m_Torso.transform.position);
-        }
-        else if (ran > 5 && ran <= 6)
-        {
             m_Head.m_Health -= amount;
             HandleHitEffect(m_Head.transform.position);
         }
+
+        UpdatePlayerManagerLimbHealth();
     }
 
     public void DestroyAllParts()
@@ -108,10 +164,32 @@ public class PlayerCombat : MonoBehaviour
         HandleHitEffect(m_Head.transform.position);
     }
 
+    public void AddHealthToParts(int amount)
+    {
+        m_LeftArm.m_Health += amount;
+        m_RightArm.m_Health += amount;
+        m_LeftLeg.m_Health += amount;
+        m_RightLeg.m_Health += amount;
+        m_Torso.m_Health += amount;
+        m_Head.m_Health += amount;
+        
+    }
+
+    public void SetHealthAllParts(int amount)
+    {
+        m_LeftArm.m_Health = amount;
+        m_RightArm.m_Health = amount;
+        m_LeftLeg.m_Health = amount;
+        m_RightLeg.m_Health = amount;
+        m_Torso.m_Health = amount;
+        m_Head.m_Health = amount;
+    }
+
     public void HandleHitEffect(Vector3 position)
     {
+        psGo.SetActive(true);
         effect.Stop();
-        effect.gameObject.transform.position = position;
+        psGo.transform.position = position;
         effect.Play();
     }
 
