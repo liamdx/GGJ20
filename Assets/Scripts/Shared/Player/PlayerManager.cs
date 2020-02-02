@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerCombat m_PlayerCombat;
     public PlayerMovement m_PlayerMovement;
-    private GameManager m_GameManager;
+    public GameManager m_GameManager;
     public Animator m_Anim;
 
     private void Awake()

@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
 
     void DoRoundReset()
     {
+
         List<int> usedIndexes = new List<int>();
         foreach(PlayerManager p in players)
         {
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour {
             p.ResetPlayer(spawns[index].position);
         }
 
-        repairUImanager.EnableRepairUI();
+        
     }
 
     void DoBeginRound() 
@@ -109,6 +110,14 @@ public class GameManager : MonoBehaviour {
                 SetGameState(GameState.Combat);
             }
         }
+        if(state == GameState.Repair)
+        {
+            repairUImanager.EnableRepairUI();
+        }
+        else
+        {
+            repairUImanager.DisableRepairUI();
+        }
     }
 
     private void OnGameStateChanged(GameState newState, GameState oldState)
@@ -158,8 +167,22 @@ public class GameManager : MonoBehaviour {
                 SetGameState(GameState.Repair);
             }
         } else {
+
             // game over
             // load game over scene
+            int highestIndex = score.IndexOf(score.Max());
+
+            switch (highestIndex)
+            {   
+                case 0:
+                    // open scene named "1Wins"
+                case 1:
+                    // open scene named "2Wins"
+                case 2:
+                    // open scene named "3Wins"
+                case 3:
+                    // open scene named "4Wins"
+            }
         }
     }
 

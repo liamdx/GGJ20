@@ -9,11 +9,7 @@ public class RepairUIManager : MonoBehaviour
 
     private void Awake()
     {
-        for(int i = 0; i < 4; i++)
-        {
-            PlayerRepairUIs.Add(new RepairModePlayerUI());
-        }
-
+        
     }
 
     public void AttachPlayersToUI()

@@ -1,54 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class MainMenuScript : MonoBehaviour
 {
-    public GameObject MainButtons;
-    public GameObject OptionsButtons;
-    public GameObject JoinScreen;
-    public int MenuSwitch=0;
+    private bool b_PlayGame = false;
 
-    // public void PlayPressed()
-    // {
-    //     MenuSwitch=1;
-    //     Debug.Log("PlayPressed");
-    // }
+   
 
-    // public void OptionsPressed()
-    // {
-    //     MenuSwitch=2;
-    //     Debug.Log("OptionsPressed");
-    // }
-
-    // public void BackPressed()
-    // {
-    //     MenuSwitch=0;
-    //     Debug.Log("BackPressed");
-    // }
-
-    // public void ExitPressed()
-    // {
-    //     MenuSwitch=4;
-    //     Debug.Log("EXIT");
-    // }
-
-    void Options() 
+    void OnEnable()
     {
-        MainButtons.SetActive(false);
-        OptionsButtons.SetActive(true);
+        Debug.Log("Enabled");
     }
 
-    void MainMenu()
+    void Disable()
     {
-        MainButtons.SetActive(true);
-        OptionsButtons.SetActive(false);
+        Debug.Log("disabled");
+
     }
-    
-    void QuitGame()
+
+    public void PlayGame()
     {
-        Application.Quit();
+        Debug.Log("play");
+        b_PlayGame = !b_PlayGame;
+        //load level
+       
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("quit");
+
+        //Application.Quit();
     }
     
     
