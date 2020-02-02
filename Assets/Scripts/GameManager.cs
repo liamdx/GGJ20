@@ -103,10 +103,19 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if(numPlayersAlive == 1)
+        if(currentRound < rounds) 
         {
-            // Show round won by player color
-            SetGameState(GameState.Repair);
+            
+            if (numPlayersAlive == 1)
+            {   
+                score[lastAlivePlayerNumber] += 1;
+                currentRound += 1;
+                // Show round won by player color
+                SetGameState(GameState.Repair);
+            }
+        } else {
+            // game over
+            // load game over scene
         }
     }
 
