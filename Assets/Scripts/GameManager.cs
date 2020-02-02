@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 
     public int rounds;
     public List<PlayerManager> players;
+    public Transform spawnContainer;
     public List<Transform> spawns;
     public int[] score = {0,0,0,0};
     public Camera mainCam;
@@ -32,8 +33,14 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
+        spawns = new List<Transform>();
         SetGameState(GameState.Repair);
         repairUImanager.AttachPlayersToUI();
+
+        foreach(Transform t in transform)
+        {
+            spawns.Add(t);
+        }
     }
 
     public Vector3 GetSpawnPoint()
@@ -170,7 +177,7 @@ public class GameManager : MonoBehaviour {
 
             // game over
             // load game over scene
-            int highestIndex = score.IndexOf(score.Max());
+            int highestIndex = GetHighestScoreIndex();
 
             switch (highestIndex)
             {   
@@ -182,8 +189,27 @@ public class GameManager : MonoBehaviour {
                     // open scene named "3Wins"
                 case 3:
                     // open scene named "4Wins"
+                break;
             }
         }
+    }
+
+    int GetHighestScoreIndex()
+    {
+        int index = 0;
+        int maxScore = 0;
+        int currentIndex = 0;
+        foreach(int i in score)
+        {
+            if(i > maxScore)
+            {
+                maxScore = i;
+                index = currentIndex;
+            }
+            currentIndex += 1;
+        }
+
+        return index;
     }
 
 
