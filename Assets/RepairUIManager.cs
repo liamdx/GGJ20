@@ -14,7 +14,6 @@ public class RepairUIManager : MonoBehaviour
             PlayerRepairUIs.Add(new RepairModePlayerUI());
         }
 
-        AttachPlayersToUI();
     }
 
     public void AttachPlayersToUI()
@@ -22,7 +21,6 @@ public class RepairUIManager : MonoBehaviour
         for(int i = 0; i < gameManager.players.Count; i++)
         {
             PlayerRepairUIs[i].associatedPlayer = gameManager.players[i];
-
         }
     }
 
@@ -31,6 +29,14 @@ public class RepairUIManager : MonoBehaviour
         for (int i = 0; i < gameManager.players.Count; i++)
         {
             PlayerRepairUIs[i].enabled = true;
+        }
+    }
+
+    public void DisableRepairUI()
+    {
+        for (int i = 0; i < gameManager.players.Count; i++)
+        {
+            PlayerRepairUIs[i].enabled = false;
         }
     }
 }

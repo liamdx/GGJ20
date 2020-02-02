@@ -48,9 +48,9 @@ public class PlayerManager : MonoBehaviour
         m_PlayerMovement.m_Rib.isKinematic = true;
         transform.position = startPosition;
         m_PlayerMovement.m_Rib.isKinematic = false;
-
         SetRepairMode();
     }
+
 
     void SetRepairMode()
     {
@@ -58,8 +58,9 @@ public class PlayerManager : MonoBehaviour
         m_PlayerCombat.m_CanAttack = false;
     }
 
-    void SetCombatMode()
+    public void SetCombatMode()
     {
+        IsAlive = true;
         m_PlayerMovement.m_CanMove = true;
         m_PlayerCombat.m_CanAttack = true;
     }

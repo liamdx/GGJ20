@@ -73,6 +73,12 @@ public class IRobotPart : MonoBehaviour
         m_Health = 100;
     }
 
+    public void DoReset()
+    {
+        m_LimbBroken = false;
+        skinnedMeshRenderer.enabled = true;
+    }
+
     private void LateUpdate()
     {
         if (!m_LimbBroken)

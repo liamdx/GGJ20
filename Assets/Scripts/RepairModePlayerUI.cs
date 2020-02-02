@@ -16,11 +16,11 @@ public class RepairModePlayerUI : MonoBehaviour
     }
 
     private void LateUpdate()
-    {
-        c.transform.position = cam.WorldToScreenPoint(associatedPlayer.transform.position);
+    {   
         if(enabled)
         {
             c.enabled = true;
+            c.transform.position = cam.WorldToScreenPoint(associatedPlayer.transform.position);
         }
         else
         {

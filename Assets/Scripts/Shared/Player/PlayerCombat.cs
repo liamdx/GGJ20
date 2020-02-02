@@ -6,13 +6,12 @@ public class PlayerCombat : MonoBehaviour
 {
     public PlayerManager m_PlayerManager;
 
-    public bool m_CanAttack = true;
+    public bool m_CanAttack;
 
     public IRobotArm m_LeftArm;
     public IRobotArm m_RightArm;
     public IRobotLeg m_LeftLeg;
     public IRobotLeg m_RightLeg;
-
     public IRobotCore m_Torso;
     public IRobotHead m_Head;
 
@@ -31,12 +30,12 @@ public class PlayerCombat : MonoBehaviour
 
     public void SetLimbsNotBroken()
     {
-        m_LeftArm.m_LimbBroken = false;
-        m_RightArm.m_LimbBroken = false;
-        m_LeftLeg.m_LimbBroken = false;
-        m_RightLeg.m_LimbBroken = false;
-        m_Torso.m_LimbBroken = false;
-        m_Head.m_LimbBroken = false;
+        m_LeftArm.DoReset();
+        m_RightArm.DoReset();
+        m_LeftLeg.DoReset();
+        m_RightLeg.DoReset();
+        m_Torso.DoReset();
+        m_Head.DoReset();
     }
 
     private void UpdatePlayerManagerLimbHealth()
@@ -76,6 +75,7 @@ public class PlayerCombat : MonoBehaviour
         effect = psGo.GetComponent<ParticleSystem>();
         effect.Stop();
         psGo.SetActive(false);
+        m_CanAttack = true;
     }
 
     private void LateUpdate()

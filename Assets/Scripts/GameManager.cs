@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-enum GameState {
+public enum GameState {
     Menu,
     Repair,
     Combat,
@@ -20,19 +20,20 @@ public class GameManager : MonoBehaviour {
     public Camera mainCam;
 
     private int currentRound;
-    private GameState state;
+    public GameState state;
     private PlayerInputManager playerInputManager;
     public RepairUIManager repairUImanager;
 
     public InputAction i;
 
+    public float countdownTimer = 15.0f;
+    public float internalCountdownTimer = 15.0f;
 
 
     private void Awake()
     {
-        SetGameState(GameState.Menu);
-
-        
+        SetGameState(GameState.Repair);
+        repairUImanager.AttachPlayersToUI();
     }
 
     void DoRoundReset()
@@ -41,6 +42,19 @@ public class GameManager : MonoBehaviour {
         {
             int index = (int) Random.Range(0, spawns.Count);
             p.ResetPlayer(spawns[index].position);
+        }
+
+        repairUImanager.EnableRepairUI();
+        internalCountdownTimer = countdownTimer;
+    }
+
+    void DoBeginRound() 
+    {
+        // hide repair UI
+        repairUImanager.DisableRepairUI();
+        foreach (PlayerManager p in players)
+        {
+            p.SetCombatMode();
         }
     }
 
@@ -65,6 +79,19 @@ public class GameManager : MonoBehaviour {
                 pm.IsAlive = true;
             }
         }
+
+        repairUImanager.AttachPlayersToUI();
+    }
+
+    private void LateUpdate()
+    {
+        if (state != GameState.Combat)
+        {
+            if (internalCountdownTimer <= 0.0f)
+            {
+                OnGameStateChanged(GameState.Combat, state);
+            }
+        }
     }
 
     private void OnGameStateChanged(GameState newState, GameState oldState)
@@ -78,8 +105,7 @@ public class GameManager : MonoBehaviour {
         }
         if(newState == GameState.Combat)
         {
-            // hide repair UI
-            // 
+            DoBeginRound();
         }
         if(newState == GameState.Menu)
         {
